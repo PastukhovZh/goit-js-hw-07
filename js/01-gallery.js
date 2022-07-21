@@ -4,7 +4,7 @@ const destructImages = destruct => {
     const { preview, original, description } = destruct;
   return `
   <div class="gallery__item" >
-    <a class="gallery__link" href="">
+    <a class="gallery__link" href="${preview}">
       <img
       class="gallery__image"
       src="${preview}"
