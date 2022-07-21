@@ -3,8 +3,8 @@ import { galleryItems } from './gallery-items.js';
 const destructImages = destruct => {
     const { preview, original, description } = destruct;
   return `
-  <div class="gallery__item">
-    <a class="gallery__link" href="${original}">
+  <div class="gallery__item" >
+    <a class="gallery__link" href="">
       <img
       class="gallery__image"
       src="${preview}"
@@ -12,40 +12,27 @@ const destructImages = destruct => {
       alt="${description}"
       />
     </a>
-  </div>`
+  </div>` 
 }
 
 const galerryOfImages = document.querySelector('.gallery');
 const addImages = galleryItems.map(destructImages).join('');
+const container = document.querySelector('.gallery');
 
 galerryOfImages.insertAdjacentHTML('afterbegin', addImages);
 
-const container = document.querySelector('.gallery')
-
-container.addEventListener('click', clicker)
-
-// const originalImageSize = basicLightbox.create(document.querySelector('[data-source]'))
-function clicker (evt) {
+function clickToOpenOriginalImg (evt) {
   evt.preventDefault();
 
   if (evt.target.nodeName !== "IMG") {
   return
 }
-
-
-
-  const originalImageSize = basicLightbox.create(evt.target.dataset.source)
+  const originalImageSize = basicLightbox.create(`  
+        <img width="1280" height="850" src="${evt.target.dataset.source}">/`);
 
 document.querySelector('.gallery').onclick = originalImageSize.show;
-
-  // return originalImageSize
-// console.log(originalImageSize)
 
 }
 
 
-// const originalImageSize = document.querySelector('[data-source]')
-// document.querySelector('body').onclick = originalImageSize.show;
-
-  
-// console.log(originalImageSize);
+container.addEventListener('click', clickToOpenOriginalImg)
