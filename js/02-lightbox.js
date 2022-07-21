@@ -5,7 +5,7 @@ const destructImages = destruct => {
     const { preview, original, description } = destruct;
   return `
     <a class="gallery__item" href="${original}">
-          <img class="gallery__image" src="${preview}" alt="${description}" />
+          <img class="gallery__image" src="${preview}" title="${description}" />
     </a>` 
 }
 const galerryOfImages = document.querySelector('.gallery');
@@ -21,17 +21,7 @@ function clickToOpenOriginalImg (evt) {
   return
   }
     
-    
-    let lightboxImg = new SimpleLightbox('.gallery__item');
-lightboxImg.on('show.simplelightbox');
-    // console.log(evt.target.nodeName)
-
-
-//   const originalImageSize = basicLightbox.create(`  
-//         <img width="1280" height="850" src="${evt.target.dataset.source}">/`);
-
-// document.querySelector('.gallery').onclick = originalImageSize.show;
-
+ new SimpleLightbox('.gallery__item').on('show.simplelightbox');
 }
 
 container.addEventListener('click', clickToOpenOriginalImg)
