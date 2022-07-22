@@ -5,7 +5,7 @@ const destructImages = destruct => {
     const { preview, original, description } = destruct;
   return `
     <a class="gallery__item" href="${original}">
-          <img class="gallery__image" src="${preview}" title="${description}" />
+          <img class="gallery__image" src="${preview}" alt="${description}" />
     </a>` 
 }
 const galerryOfImages = document.querySelector('.gallery');
@@ -14,13 +14,13 @@ const container = document.querySelector('.gallery');
 galerryOfImages.insertAdjacentHTML('afterbegin', addImages);
 
 
-function clickToOpenOriginalImg (evt) {
+function clickToOpenOriginalImg(evt) {
   evt.preventDefault();
   if (evt.target.nodeName !== "IMG") {
-  return
+    return
   }
 }
-new SimpleLightbox('.gallery__item').on('show.simplelightbox');
+new SimpleLightbox('.gallery__item', {  captionsData: 'alt',  captionDelay: 250}).on('show.simplelightbox');
 
 
 container.addEventListener('click', clickToOpenOriginalImg)

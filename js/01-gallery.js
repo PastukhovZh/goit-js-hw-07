@@ -31,6 +31,7 @@ function clickToOpenOriginalImg (evt) {
         <img width="1280" height="850" src="${evt.target.dataset.source}">/`;
 
   basicLightbox.create(originalImageSize, {
+
 		onShow: () => {
 			document.querySelector('.gallery').onclick
     },
