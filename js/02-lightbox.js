@@ -16,12 +16,11 @@ galerryOfImages.insertAdjacentHTML('afterbegin', addImages);
 
 function clickToOpenOriginalImg (evt) {
   evt.preventDefault();
-
   if (evt.target.nodeName !== "IMG") {
   return
   }
-    
- new SimpleLightbox('.gallery__item').on('show.simplelightbox');
 }
+new SimpleLightbox('.gallery__item').on('show.simplelightbox');
+
 
 container.addEventListener('click', clickToOpenOriginalImg)

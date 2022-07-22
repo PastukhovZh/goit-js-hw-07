@@ -27,11 +27,21 @@ function clickToOpenOriginalImg (evt) {
   if (evt.target.nodeName !== "IMG") {
   return
 }
-  const originalImageSize = basicLightbox.create(`  
-        <img width="1280" height="850" src="${evt.target.dataset.source}">/`);
+  const originalImageSize =`  
+        <img width="1280" height="850" src="${evt.target.dataset.source}">/`;
 
-document.querySelector('.gallery').onclick = originalImageSize.show;
-
+  basicLightbox.create(originalImageSize, {
+		onShow: () => {
+			document.querySelector('.gallery').onclick
+    },
+    onClose: () => {
+      document.querySelector('.gallery').onclick
+    }
+	}).show()
+  
+  // document.querySelector('.gallery').onclick = originalImageSize.show;
+  
+  
 }
 
 
